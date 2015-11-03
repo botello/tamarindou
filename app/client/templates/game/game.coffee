@@ -1,3 +1,5 @@
+Meteor.subscribe 'quizzes'
+
 Template.Game.events {}
 
 Template.Game.helpers {}
