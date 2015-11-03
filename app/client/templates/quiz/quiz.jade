@@ -1,0 +1,88 @@
+template(name='Quiz')
+  .quiz
+    .ui.text.container
+      +Quiz_TrueOrFalse
+      +Quiz_MultipleChoice
+      +Quiz_SingleChoice
+
+template(name='Quiz_Header')
+  .ui.attached.message
+    .header Cierto o Falso
+    p Es cierto o falso
+
+template(name='Quiz_Footer')
+  .ui.bottom.attached.message
+    .ui.right.aligned.container
+      button.ui.basic.right.labeled.icon.button
+        i.trash.icon
+        | Limpiar
+      button.ui.right.labeled.icon.button
+        i.send.icon
+        | Revisar
+
+
+template(name='Quiz_TrueOrFalse')
+  +Quiz_Header
+  form.ui.form.attached.fluid.segment
+    .ui.dividing.header
+      | Lorem ipsum shit shit
+    .ui.field
+      .ui.center.aligned.container
+        .ui.buttons
+          button.ui.green.button Cierto
+          .or(data-text="o")
+          button.ui.red.button Falso
+  +Quiz_Footer
+
+template(name='Quiz_MultipleChoice')
+  +Quiz_Header
+  form.ui.form.attached.fluid.segment
+    .ui.dividing.header
+      | bla blajlbkabj abj ;lba blajbal bbaklbaj
+      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
+      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
+    .ui.fluid.grouped.fields
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 1
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 2
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 3
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 4
+  +Quiz_Footer
+
+
+template(name='Quiz_SingleChoice')
+  +Quiz_Header
+  form.ui.form.attached.fluid.segment
+    .ui.dividing.header
+      | bla blajlbkabj abj ;lba blajbal bbaklbaj
+      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
+      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
+    .ui.fluid.grouped.fields
+      .ui.field
+        .ui.radio.checkbox
+          input.hidden(type="radio" tabindex="0")
+          label Option 1
+      .ui.field
+        .ui.radio.checkbox
+          input.hidden(type="radio" tabindex="0")
+          label Option 2
+      .ui.field
+        .ui.radio.checkbox
+          input.hidden(type="radio" tabindex="0")
+          label Option 3
+      .ui.field
+        .ui.radio.checkbox
+          input.hidden(type="radio" tabindex="0")
+          label Option 4
+  +Quiz_Footer
