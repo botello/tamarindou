@@ -1,5 +1,7 @@
 template(name='Quiz')
   .quiz
+    each(quiz in quizzes)
+     h1= quiz.template
     .ui.text.container
       +Quiz_TrueOrFalse
       +Quiz_MultipleChoice
