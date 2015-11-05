@@ -1,10 +1,10 @@
-Template.Navbar.events {}
+Template.Header.events {}
 
-Template.Navbar.helpers {}
+Template.Header.helpers {}
 
-# Navbar: Lifecycle Hooks
-Template.Navbar.onCreated ->
+# Header: Lifecycle Hooks
+Template.Header.onCreated ->
 
-Template.Navbar.onRendered ->
+Template.Header.onRendered ->
 
-Template.Navbar.onDestroyed ->
+Template.Header.onDestroyed ->

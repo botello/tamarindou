@@ -2,65 +2,74 @@ template(name='Quiz')
   .quiz
     //- each(quiz in quizzes)
     //- h1= quiz.template
-    .ui.text.container
-      +_Quiz
-      +Quiz_TrueOrFalse
-      //-+Quiz_MultipleChoice
-      //-+Quiz_SingleChoice
+    .ui.grid.container
+      .ui.text.container
+        +_Quiz
+        +Quiz_TrueOrFalse
+        +Quiz_MultipleChoice
+        +Quiz_SingleChoice
 
 
 template(name="_Quiz")
-  .ui.segment
-    .ui.grid
-      .two.column.row
-        .olive.left.floated.column
-          p Left
-        .green.right.floatd.right.aligned.column
-          p Rigth
-      .row
-        .red.column
-          p Progress
-      .row
-        .olive.column
-          p Question
-          p Solutions
-      .two.column.row
-        .olive.left.floated.column
-          p Left
-        .green.right.floated.right.aligned.column
-          p Right
-
-
-  .ui.segment
-    button.ui.right.floated.button Right
-    i.big.check.circle.outline.icon
-    span
-      | Hello World
-
   .ui.segments
+
     .ui.segment
-      .ui
-        p header
       .ui.progress
         .bar
-      .ui.header
-        h2.header question
-    .ui.secondary.segment
-      .ui.left.floated
-        p Left message
-      .ui.right.floated
-        .button Floated
+      h2.ui.header
+        | No es lo mismo un metro de encaje negro, que...
+      button.ui.primary.compact.big.button un
+      button.ui.primary.compact.big.button negro
 
-  .ui.top.attached.message
-    p Top
-  .ui.attached.fluid.segment
-    p Middle
-  .ui.bottom.attached.message
-    .ui.two.column.stackable.grid.container
-      .green.column
-        p Bottom
-      .blue.column
-        p Bottom
+    .ui.segment
+      button.ui.primary.compact.big.button un
+      button.ui.primary.compact.big.button negro
+
+    .ui.segment
+      button.ui.compact.big.button metro
+      button.ui.compact.big.button un
+      button.ui.compact.big.button encaje
+      button.ui.compact.big.button te
+
+    .ui.right.aligned.segment.container
+      button.ui.right.labeled.icon.button
+        i.fast.forward.icon
+        | Saltar
+      button.ui.disabled.right.labeled.icon.button
+        i.send.icon
+        | Revisar
+    .ui.right.aligned.segment.container
+      button.ui.right.labeled.icon.button
+        i.fast.forward.icon
+        | Saltar
+      button.ui.right.labeled.icon.button
+        i.send.icon
+        | Revisar
+    .ui.right.aligned.segment.container
+      button.ui.primary.right.labeled.icon.button
+        i.right.chevron.icon
+        | Continuar
+
+  .ui.positive.icon.message
+    i.check.circle.outline.icon
+    .content
+      .header ¡Correcto!
+      p
+        button.ui.basic.button
+          | Reportar un problema
+        button.ui.basic.button
+          | Discutir soluci&oacute;n
+
+  .ui.negative.icon.message
+    i.remove.circle.outline.icon
+    .content
+      .header ¡Incorrecto!
+      p
+        button.ui.basic.button
+          | Reportar un problema
+        button.ui.basic.button
+          | Discutir soluci&oacute;n
+
 
 template(name='Quiz_Header')
   .ui.top.attached.message
