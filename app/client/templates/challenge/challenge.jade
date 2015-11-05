@@ -1,11 +1,12 @@
 template(name='Challenge')
   .challenge
 
-    if template = "token-syllable"
-      +_ChallengeTokenSyllable
+    +ChallengeTokenSyllable
+    //-if template = "token-syllable"
+    //-  +_ChallengeTokenSyllable
 
-    if template = "token-word"
-      +_ChallengeTokenWord
+    //-if template = "token-word"
+    //-  +_ChallengeTokenWord
 
     
 template(name='_ChallengeTokenSyllable')

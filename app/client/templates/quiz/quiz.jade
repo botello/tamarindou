@@ -6,8 +6,7 @@ template(name="Quiz")
         h1.ui.header #{ name }
 
         each challenges
-          p #{ template }
-          p #{ question }
+          +Challenge
 
       +_QuizControl
     +_QuizResult

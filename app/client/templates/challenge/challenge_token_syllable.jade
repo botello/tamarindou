@@ -1,0 +1,18 @@
+template(name='ChallengeTokenSyllable')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge Token Syllable
+    h2.ui.header
+      | No es lo mismo un metro de encaje negro, que...
+
+    p #{template}
+    p #{question}
+
+
+  #drop-box.ui.basic.segment
+    each t in drop_tokens
+      button.ui.blue.compact.big.button(value="#{t}") #{t}
+
+  #pick-box.ui.basic.segment
+    each t in pick_tokens
+      button.ui.compact.big.button(value="#{t}") #{t}
