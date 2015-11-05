@@ -12,5 +12,8 @@ Template.Quiz.helpers {
 Template.Quiz.onCreated ->
 
 Template.Quiz.onRendered ->
+  $('#quiz-progress').progress({
+    showActivity: false
+  })
 
 Template.Quiz.onDestroyed ->

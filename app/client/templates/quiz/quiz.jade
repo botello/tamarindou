@@ -14,18 +14,18 @@ template(name="_Quiz")
   .ui.segments
 
     .ui.segment
-      .ui.progress
+
+      #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
         .bar
+
       h2.ui.header
         | No es lo mismo un metro de encaje negro, que...
+
+    .ui.basic.segment
       button.ui.primary.compact.big.button un
       button.ui.primary.compact.big.button negro
 
-    .ui.segment
-      button.ui.primary.compact.big.button un
-      button.ui.primary.compact.big.button negro
-
-    .ui.segment
+    .ui.basic.segment
       button.ui.compact.big.button metro
       button.ui.compact.big.button un
       button.ui.compact.big.button encaje
@@ -35,17 +35,9 @@ template(name="_Quiz")
       button.ui.right.labeled.icon.button
         i.fast.forward.icon
         | Saltar
-      button.ui.disabled.right.labeled.icon.button
-        i.send.icon
-        | Revisar
-    .ui.right.aligned.segment.container
-      button.ui.right.labeled.icon.button
-        i.fast.forward.icon
-        | Saltar
       button.ui.right.labeled.icon.button
         i.send.icon
         | Revisar
-    .ui.right.aligned.segment.container
       button.ui.primary.right.labeled.icon.button
         i.right.chevron.icon
         | Continuar
