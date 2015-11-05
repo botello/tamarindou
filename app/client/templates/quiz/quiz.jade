@@ -1,14 +1,69 @@
 template(name='Quiz')
   .quiz
-    each(quiz in quizzes)
-     h1= quiz.template
+    //- each(quiz in quizzes)
+    //- h1= quiz.template
     .ui.text.container
+      +_Quiz
       +Quiz_TrueOrFalse
-      +Quiz_MultipleChoice
-      +Quiz_SingleChoice
+      //-+Quiz_MultipleChoice
+      //-+Quiz_SingleChoice
+
+
+template(name="_Quiz")
+  .ui.segment
+    .ui.grid
+      .two.column.row
+        .olive.left.floated.column
+          p Left
+        .green.right.floatd.right.aligned.column
+          p Rigth
+      .row
+        .red.column
+          p Progress
+      .row
+        .olive.column
+          p Question
+          p Solutions
+      .two.column.row
+        .olive.left.floated.column
+          p Left
+        .green.right.floated.right.aligned.column
+          p Right
+
+
+  .ui.segment
+    button.ui.right.floated.button Right
+    i.big.check.circle.outline.icon
+    span
+      | Hello World
+
+  .ui.segments
+    .ui.segment
+      .ui
+        p header
+      .ui.progress
+        .bar
+      .ui.header
+        h2.header question
+    .ui.secondary.segment
+      .ui.left.floated
+        p Left message
+      .ui.right.floated
+        .button Floated
+
+  .ui.top.attached.message
+    p Top
+  .ui.attached.fluid.segment
+    p Middle
+  .ui.bottom.attached.message
+    .ui.two.column.stackable.grid.container
+      .green.column
+        p Bottom
+      .blue.column
+        p Bottom
 
 template(name='Quiz_Header')
-  .ui.attached.message
+  .ui.top.attached.message
     .header Cierto o Falso
     p Es cierto o falso
 
