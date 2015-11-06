@@ -1,0 +1,123 @@
+template(name='Challenge')
+  .challenge
+
+    if template = "token-syllable"
+      +_ChallengeTokenSyllable
+
+    if template = "token-word"
+      +_ChallengeTokenWord
+
+    
+template(name='_ChallengeTokenSyllable')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge Token Syllable
+    h2.ui.header
+      | No es lo mismo un metro de encaje negro, que...
+
+  .ui.basic.segment
+    button.ui.primary.compact.big.button un
+    button.ui.primary.compact.big.button ne
+    button.ui.primary.compact.big.button gro
+
+  .ui.basic.segment
+    button.ui.compact.big.button tro
+    button.ui.compact.big.button me
+    button.ui.compact.big.button un
+    button.ui.compact.big.button ca
+    button.ui.compact.big.button en
+    button.ui.compact.big.button je
+    button.ui.compact.big.button te
+
+template(name='_ChallengeTokenWord')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge Token Word
+    h2.ui.header
+      | No es lo mismo un metro de encaje negro, que...
+
+  .ui.basic.segment
+    button.ui.primary.compact.big.button un
+    button.ui.primary.compact.big.button negro
+
+  .ui.basic.segment
+    button.ui.compact.big.button metro
+    button.ui.compact.big.button un
+    button.ui.compact.big.button encaje
+    button.ui.compact.big.button te
+
+
+template(name='_ChallengeTrueOrFalse')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge True Or False
+    h2.ui.header
+      | Lorem ipsum shit shit
+
+  .ui.basic.segment
+    .ui.field
+      .ui.center.aligned.container
+        .ui.buttons
+          button.ui.green.button Cierto
+          .or(data-text="o")
+          button.ui.red.button Falso
+
+
+template(name='_ChallengeMultipleChoice')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge Multiple Chice
+    h2.ui.header
+      | bla blajlbkabj abj ;lba blajbal bbaklbaj
+      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
+      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
+
+  .ui.basic.segment
+    .ui.fluid.grouped.fields
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 1
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 2
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 3
+      .ui.field
+        .ui.checkbox
+          input(type="checkbox")
+          label Option 4
+
+
+template(name='_ChallengeSingleChoice')
+  .ui.basic.segment
+    h2.ui.header
+      | Challenge Single Chice
+    h2.ui.header
+      | bla blajlbkabj abj ;lba blajbal bbaklbaj
+      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
+      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
+
+  .ui.basic.segment
+    .ui.fluid.grouped.fields
+      label This is a label
+      .ui.field
+        .ui.radio.checkbox
+          input(type="radio" name="radiochoice")
+          label Option 1
+      .ui.field
+        .ui.radio.checkbox
+          input(type="radio" name="radiochoice")
+          label Option 2
+      .ui.field
+        .ui.radio.checkbox
+          input(type="radio" name="radiochoice")
+          label Option 3
+      .ui.field
+        .ui.radio.checkbox
+          input(type="radio" name="radiochoice")
+          label Option 4
+

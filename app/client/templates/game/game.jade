@@ -1,7 +1,10 @@
 template(name='Game')
   .game
     +Header
-    +Quiz
+
+    .ui.grid.container
+      .ui.text.container
+        each quiz in quizzes
+          +Quiz quiz
+    
     +Footer
-
-

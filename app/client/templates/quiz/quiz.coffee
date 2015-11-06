@@ -1,12 +1,7 @@
-Meteor.subscribe('quizzes')
-
 
 Template.Quiz.events {}
 
-Template.Quiz.helpers {
-  quizzes: ->
-    return Quizzes.find()
-}
+Template.Quiz.helpers {}
 
 # Quiz: Lifecycle Hooks
 Template.Quiz.onCreated ->

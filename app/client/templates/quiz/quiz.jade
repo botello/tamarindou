@@ -1,21 +1,14 @@
-template(name='Quiz')
-  .quiz
-    //- each(quiz in quizzes)
-    //- h1= quiz.template
-    .ui.grid.container
-      .ui.text.container
-        each quizzes
-          +_Quiz
-
-template(name="_Quiz")
+template(name="Quiz")
   .quiz
     .ui.segments
       +_QuizProgress
-      +_QuizContent
-      +_QuizContent_Token
-      +_QuizContent_TrueOrFalse
-      +_QuizContent_MultipleChoice
-      +_QuizContent_SingleChoice
+      .ui.basic.segment
+        h1.ui.header #{ name }
+
+        each challenges
+          p #{ template }
+          p #{ question }
+
       +_QuizControl
     +_QuizResult
 
@@ -23,13 +16,6 @@ template(name="_QuizProgress")
   .ui.basic.segment
     #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
       .bar
-
-template(name="_QuizContent")
-  .ui.basic.segment
-    h2.ui.header
-      | #{template}
-  .ui.basic.segment
-    p #{question}
 
 template(name="_QuizControl")
   .ui.right.aligned.segment.container
@@ -64,84 +50,3 @@ template(name="_QuizResult")
         //-    | Reportar un problema
         //-  button.ui.basic.button
         //-    | Discutir soluci&oacute;n
-
-template(name="_QuizContent_Token")
-  .ui.basic.segment
-    h2.ui.header
-      | No es lo mismo un metro de encaje negro, que...
-
-  .ui.basic.segment
-    button.ui.primary.compact.big.button un
-    button.ui.primary.compact.big.button negro
-
-  .ui.basic.segment
-    button.ui.compact.big.button metro
-    button.ui.compact.big.button un
-    button.ui.compact.big.button encaje
-    button.ui.compact.big.button te
-
-template(name='_QuizContent_TrueOrFalse')
-  .ui.basic.segment
-    h2.ui.header
-      | Lorem ipsum shit shit
-
-  .ui.basic.segment
-    .ui.field
-      .ui.center.aligned.container
-        .ui.buttons
-          button.ui.green.button Cierto
-          .or(data-text="o")
-          button.ui.red.button Falso
-
-template(name='_QuizContent_MultipleChoice')
-  .ui.basic.segment
-    h2.ui.header
-      | bla blajlbkabj abj ;lba blajbal bbaklbaj
-      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
-      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
-
-  .ui.basic.segment
-    .ui.fluid.grouped.fields
-      .ui.field
-        .ui.checkbox
-          input(type="checkbox")
-          label Option 1
-      .ui.field
-        .ui.checkbox
-          input(type="checkbox")
-          label Option 2
-      .ui.field
-        .ui.checkbox
-          input(type="checkbox")
-          label Option 3
-      .ui.field
-        .ui.checkbox
-          input(type="checkbox")
-          label Option 4
-
-template(name='_QuizContent_SingleChoice')
-  .ui.basic.segment
-    h2.ui.header
-      | bla blajlbkabj abj ;lba blajbal bbaklbaj
-      | labjabl;ka akjkaljkdfajskfljas faifowuerqkfs;fujpe3wi
-      | fjepqwiufw; a aiosef asfdioapwe fasl;fja wds
-
-  .ui.basic.segment
-    .ui.fluid.grouped.fields
-      label This is a label
-      .ui.field
-        .ui.radio.checkbox
-          input(type="radio" name="radiochoice")
-          label Option 1
-      .ui.field
-        .ui.radio.checkbox
-          input(type="radio" name="radiochoice")
-          label Option 2
-      .ui.field
-        .ui.radio.checkbox
-          input(type="radio" name="radiochoice")
-          label Option 3
-      .ui.field
-        .ui.radio.checkbox
-          input(type="radio" name="radiochoice")
-          label Option 4
