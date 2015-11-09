@@ -4,11 +4,11 @@ template(name='ChallengeTokenSyllable')
       | Challenge Token Syllable
 
   #drop-box.ui
-    each t in drop_tokens
-      button.ui.blue.compact.button(value="#{t}") #{t}
+    each t in dropTokens
+      button.ui.blue.compact.button(value="#{t}") {{tokenText t}}
 
   .ui.divider
 
   #pick-box.ui
-    each t in pick_tokens
-      button.ui.compact.button(value="#{t}") #{t}
+    each t in pickTokens
+      button.ui.compact.button(value="#{t}") {{tokenText t}}
