@@ -18,7 +18,7 @@ Template.ChallengeTokenSyllable.helpers {
 # ChallengeTokenSyllable: Lifecycle Hooks
 Template.ChallengeTokenSyllable.onCreated ->
   # List of todkens with its index
-  @tokens = @data.question #.join(' ').split(' ')
+  @tokens = _.flatten(_.map(@data.question.join(' ').split(' '), (w) -> Hypher.languages.es.hyphenate(w)))
   @pickTokens = new ReactiveArray _.shuffle(_.range(@tokens.length))
   @dropTokens = new ReactiveArray()
 
