@@ -1,14 +1,12 @@
 
 Template.ChallengeTokenSyllable.events {
   'click #drop-box button': (event, template) ->
-    console.dir(event.currentTarget)
-    Template.instance().dropTokens.remove parseInt(event.currentTarget.value)
-    Template.instance().pickTokens.push   parseInt(event.currentTarget.value)
+    template.dropTokens.remove parseInt(event.currentTarget.value)
+    template.pickTokens.push   parseInt(event.currentTarget.value)
 
   'click #pick-box button': (event, template) ->
-    console.dir(event.currentTarget)
-    Template.instance().pickTokens.remove parseInt(event.currentTarget.value)
-    Template.instance().dropTokens.push   parseInt(event.currentTarget.value)
+    template.pickTokens.remove parseInt(event.currentTarget.value)
+    template.dropTokens.push   parseInt(event.currentTarget.value)
 }
 
 Template.ChallengeTokenSyllable.helpers {
@@ -20,7 +18,7 @@ Template.ChallengeTokenSyllable.helpers {
 # ChallengeTokenSyllable: Lifecycle Hooks
 Template.ChallengeTokenSyllable.onCreated ->
   # List of todkens with its index
-  @tokens = @data.question.join(' ').split(' ')
+  @tokens = @data.question #.join(' ').split(' ')
   @pickTokens = new ReactiveArray _.shuffle(_.range(@tokens.length))
   @dropTokens = new ReactiveArray()
 
