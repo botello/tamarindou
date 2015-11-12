@@ -1,21 +1,21 @@
 template(name="Quiz")
   .quiz
-    .ui.segments
+    .ui.segment
       +_QuizProgress
-      .ui.basic.segment
-        each challenges
-          +Challenge
+      each challenges
+        +Challenge
 
+      .ui.divider
       +_QuizControl
     +_QuizResult
 
 template(name="_QuizProgress")
-  .ui.basic.segment
+  .ui.container
     #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
       .bar
 
 template(name="_QuizControl")
-  .ui.right.aligned.segment.container
+  .ui.right.aligned.container
     button.ui.right.labeled.icon.button
       i.fast.forward.icon
       | Saltar
