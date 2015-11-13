@@ -3,7 +3,11 @@ template(name='Challenge')
     //-+ElemHeader
     //-+ElemParagraph
     //-+ElemSentence
-    +Template.dynamic template=getTemplateName data=innerContext
+
+    each element in elements
+      with element
+        +Template.dynamic template=getTemplateName data=innerContext
+
     //-+ChallengeTokenSyllable
     //-if template = "token-syllable"
     //-  +_ChallengeTokenSyllable

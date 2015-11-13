@@ -2,19 +2,15 @@ template(name="Quiz")
   .quiz
     .ui.segments
       .ui.segment
-        +_QuizProgress
-        each challenges
+        #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
+          .bar
+        with getChallenge
           +Challenge
       .ui.secondary.segment
-        +_QuizControl
-      //-+_QuizResult
+        +QuizControl
+      //-+QuizResult
 
-template(name="_QuizProgress")
-  .ui.container
-    #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
-      .bar
-
-template(name="_QuizControl")
+template(name="QuizControl")
   .ui.right.aligned.container
     button.ui.right.labeled.icon.button
       i.fast.forward.icon
@@ -26,7 +22,7 @@ template(name="_QuizControl")
       i.right.chevron.icon
       | Continuar
 
-template(name="_QuizResult")
+template(name="QuizResult")
   //-if correct
   .ui.bottom.attached.positive.icon.message
     i.check.circle.outline.icon

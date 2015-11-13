@@ -1,3 +1,2 @@
 template(name='ElemParagraph')
-  p
-    | Find me in app/client/templates/elem_header/elem_paragraph
+  p($dyn = this.atts)= this.text
