@@ -8,9 +8,9 @@ if Quizzes.find().count() == 0
         {
           elements: [
             { type: 'header', value: 'Completa el verso' }
-            { type: 'paragraph', value: 'Entre Melón y Melames' }
-            { type: 'paragraph', value: 'hicieron una orquesta' }
-            { type: 'paragraph', value: 'Melón toca el violín' }
+            { type: 'sentence', value: 'Entre Melón y Melames' }
+            { type: 'sentence', value: 'hicieron una orquesta' }
+            { type: 'sentence', value: 'Melón toca el violín' }
             { type: 'token-word', value: 'y Melames la trompeta' }
           ]
           solution: {}

@@ -1,46 +1,57 @@
 template(name="Quiz")
   .quiz
     .ui.segments
+
       .ui.segment
+        //- Quiz Progress
         #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
           .bar
+
+        //- Quiz Challenge
         with getChallenge
           +Challenge
+
+      //- Quiz Control
       .ui.secondary.segment
-        +QuizControl
-      //-+QuizResult
+        .ui.right.aligned.container
 
-template(name="QuizControl")
-  .ui.right.aligned.container
-    button.ui.right.labeled.icon.button
-      i.fast.forward.icon
-      | Saltar
-    button.ui.right.labeled.icon.button
-      i.send.icon
-      | Revisar
-    button.ui.primary.right.labeled.icon.button
-      i.right.chevron.icon
-      | Continuar
+          if canReview
+            button#challenge-skip.ui.right.labeled.icon.button
+              i.fast.forward.icon
+              | Saltar
+            button#challenge-review.ui.right.labeled.icon.button
+              i.send.icon
+              | Revisar
 
-template(name="QuizResult")
-  //-if correct
-  .ui.bottom.attached.positive.icon.message
-    i.check.circle.outline.icon
-    .content
-      .header ¡Correcto!
-      //-p
-      //-  button.ui.basic.button
-      //-    | Reportar un problema
-      //-  button.ui.basic.button
-      //-    | Discutir soluci&oacute;n
+          if canContinue
+            button#challenge-next.ui.primary.right.labeled.icon.button
+              i.chevron.right.icon
+              | Continuar
+              
+          if canExit
+            button#challenge-next.ui.primary.right.labeled.icon.button
+              i.arrow.right.icon
+              | Salir
 
-  //-else
-  .ui.bottom.attached.negative.icon.message
-    i.remove.circle.outline.icon
-    .content
-      .header ¡Incorrecto!
-      //-p
-      //-  button.ui.basic.button
-      //-    | Reportar un problema
-      //-  button.ui.basic.button
-      //-    | Discutir soluci&oacute;n
+      //- QuizResult
+      if isDoneAndCorrect
+        .ui.bottom.attached.positive.icon.message
+          i.check.circle.outline.icon
+          .content
+            .header ¡Correcto!
+            //-p
+            //-  button.ui.basic.button
+            //-    | Reportar un problema
+            //-  button.ui.basic.button
+            //-    | Discutir soluci&oacute;n
+
+      if isDoneAndIncorrect
+        .ui.bottom.attached.negative.icon.message
+          i.remove.circle.outline.icon
+          .content
+            .header ¡Incorrecto!
+            //-p
+            //-  button.ui.basic.button
+            //-    | Reportar un problema
+            //-  button.ui.basic.button
+            //-    | Discutir soluci&oacute;n
