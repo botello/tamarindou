@@ -1,3 +1,2 @@
 template(name='ElemHeader')
-  .ui.header
-    | Find me in app/client/templates/elem_header/elem_header
+  .ui.header($dyn = this.atts)= this.text

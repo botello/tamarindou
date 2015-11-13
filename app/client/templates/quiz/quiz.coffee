@@ -7,7 +7,7 @@ Template.Quiz.helpers {}
 Template.Quiz.onCreated ->
 
 Template.Quiz.onRendered ->
-  this.$('#quiz-progress').progress({
+  this.$('.ui .progress').progress({
     showActivity: false
   })
 

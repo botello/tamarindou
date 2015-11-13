@@ -1,13 +1,13 @@
 template(name="Quiz")
   .quiz
-    .ui.segment
-      +_QuizProgress
-      each challenges
-        +Challenge
-
-      .ui.divider
-      +_QuizControl
-    +_QuizResult
+    .ui.segments
+      .ui.segment
+        +_QuizProgress
+        each challenges
+          +Challenge
+      .ui.secondary.segment
+        +_QuizControl
+      //-+_QuizResult
 
 template(name="_QuizProgress")
   .ui.container
@@ -27,23 +27,24 @@ template(name="_QuizControl")
       | Continuar
 
 template(name="_QuizResult")
-  if correct
-    .ui.positive.icon.message
-      i.check.circle.outline.icon
-      .content
-        .header ¡Correcto!
-        //-p
-        //-  button.ui.basic.button
-        //-    | Reportar un problema
-        //-  button.ui.basic.button
-        //-    | Discutir soluci&oacute;n
-  else
-    .ui.negative.icon.message
-      i.remove.circle.outline.icon
-      .content
-        .header ¡Incorrecto!
-        //-p
-        //-  button.ui.basic.button
-        //-    | Reportar un problema
-        //-  button.ui.basic.button
-        //-    | Discutir soluci&oacute;n
+  //-if correct
+  .ui.bottom.attached.positive.icon.message
+    i.check.circle.outline.icon
+    .content
+      .header ¡Correcto!
+      //-p
+      //-  button.ui.basic.button
+      //-    | Reportar un problema
+      //-  button.ui.basic.button
+      //-    | Discutir soluci&oacute;n
+
+  //-else
+  .ui.bottom.attached.negative.icon.message
+    i.remove.circle.outline.icon
+    .content
+      .header ¡Incorrecto!
+      //-p
+      //-  button.ui.basic.button
+      //-    | Reportar un problema
+      //-  button.ui.basic.button
+      //-    | Discutir soluci&oacute;n
