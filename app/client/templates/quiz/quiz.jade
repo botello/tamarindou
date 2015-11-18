@@ -3,20 +3,21 @@ template(name="Quiz")
     .ui.segments
 
       .ui.segment
-        //- Quiz Progress
-        #quiz-progress.ui.indicating.progress(data-percentage="{{progress}}")
-          .bar
-
         .quiz-content
+          //- Quiz Progress
+          #quiz-progress.ui.indicating.progress
+            .bar
+
           if stateBegin
             .ui.header ¿Estás listo para comenzar?
           
-          if stateFinish
+          if stateEnd
             .ui.header Resultados
 
           //- Quiz Challenge
-          with challenge
-            +Challenge
+          if stateReady
+            with challenge
+              +Challenge
 
       //- Quiz Control
       .ui.secondary.segment
@@ -27,12 +28,7 @@ template(name="Quiz")
               i.chevron.right.icon
               | Comenzar
           
-          if stateEnd
-            button#quiz-finish.ui.primary.right.labeled.icon.button
-              i.chevron.right.icon
-              | Comenzar
-          
-          if state
+          if stateAnswer
             button#challenge-skip.ui.right.labeled.icon.button
               i.fast.forward.icon
               | Saltar
@@ -40,35 +36,36 @@ template(name="Quiz")
               i.send.icon
               | Revisar
 
-          if canContinue
+          if stateResult
             button#challenge-next.ui.primary.right.labeled.icon.button
               i.chevron.right.icon
               | Continuar
               
-          if canExit
+          if stateEnd
             button#challenge-next.ui.primary.right.labeled.icon.button
               i.arrow.right.icon
               | Salir
 
       //- QuizResult
-      if isDoneAndCorrect
-        .ui.bottom.attached.positive.icon.message
-          i.check.circle.outline.icon
-          .content
-            .header ¡Correcto!
-            //-p
-            //-  button.ui.basic.button
-            //-    | Reportar un problema
-            //-  button.ui.basic.button
-            //-    | Discutir soluci&oacute;n
+      if stateResult
+        if isCorrect
+          .ui.bottom.attached.positive.icon.message
+            i.check.circle.outline.icon
+            .content
+              .header ¡Correcto!
+              //-p
+              //-  button.ui.basic.button
+              //-    | Reportar un problema
+              //-  button.ui.basic.button
+              //-    | Discutir soluci&oacute;n
 
-      if isDoneAndIncorrect
-        .ui.bottom.attached.negative.icon.message
-          i.remove.circle.outline.icon
-          .content
-            .header ¡Incorrecto!
-            //-p
-            //-  button.ui.basic.button
-            //-    | Reportar un problema
-            //-  button.ui.basic.button
-            //-    | Discutir soluci&oacute;n
+        if isIncorrect
+          .ui.bottom.attached.negative.icon.message
+            i.remove.circle.outline.icon
+            .content
+              .header ¡Incorrecto!
+              //-p
+              //-  button.ui.basic.button
+              //-    | Reportar un problema
+              //-  button.ui.basic.button
+              //-    | Discutir soluci&oacute;n

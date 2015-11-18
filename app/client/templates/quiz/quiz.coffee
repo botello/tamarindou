@@ -6,24 +6,29 @@ Template.Quiz.events {
   'click button#quiz-finish': (event, template) ->
 
   'click button#challenge-review': (event, template) ->
-    isDone = true
     isCorrect = Math.random() >= 0.5
-    template.state.set('isDone', isDone)
+    if isCorrect
+      score = template.state.get('score')
+      template.state.set('score', score + 1)
     template.state.set('isCorrect', isCorrect)
+    template.state.set('fsm', 'result')
 
   'click button#challenge-skip': (event, template) ->
-    isDone = true
     isCorrect = false
-    template.state.set('isDone', isDone)
     template.state.set('isCorrect', isCorrect)
+    template.state.set('fsm', 'result')
 
   'click button#challenge-next': (event, template) ->
-    total = @challenges.length
-    current = template.state.get('current')
-    isLast = current == total - 1
-    if not isLast
+    template.state.set('isCorrect', undefined)
+    isLast = template.state.get('isLast')
+    if isLast
+      template.state.set('fsm', 'end')
+    else
+      current = template.state.get('current')
       template.state.set('current', current + 1)
-      template.state.set('isDone', false)
+      template.state.set('fsm', 'answer')
+
+    template.$('.quiz #quiz-progress').progress('increment')
 }
 
 
@@ -34,7 +39,10 @@ Template.Quiz.helpers {
     return @challenges[current]
 
   progress: ->
-    return Template.instance().state.get('current') / @challenges.length
+    return Template.instance().state.get('current')
+
+  score: ->
+    return Template.instance().state.get('score')
 
   progressTotal: ->
     return @challenges.length
@@ -43,15 +51,11 @@ Template.Quiz.helpers {
     return Template.instance().state.equals('fsm', 'begin')
 
   stateReady: ->
-    return Template.instance().stateAnswer or
-            Template.instance().stateReview or
-            Template.instance().stateResult
+    return Template.instance().state.equals('fsm', 'answer') or
+           Template.instance().state.equals('fsm', 'result')
 
   stateAnswer: ->
     return Template.instance().state.equals('fsm', 'answer')
-
-  stateReview: ->
-    return Template.instance().state.equals('fsm', 'review')
 
   stateResult: ->
     return Template.instance().state.equals('fsm', 'result')
@@ -59,30 +63,11 @@ Template.Quiz.helpers {
   stateEnd: ->
     return Template.instance().state.equals('fsm', 'end')
 
-  canReview: ->
-    isDone = Template.instance().state.get('isDone')
-    isLast = Template.instance().state.get('isLast')
-    return not isLast and not isDone
+  isCorrect: ->
+    return Template.instance().state.equals('isCorrect', true)
 
-  canContinue: ->
-    isDone = Template.instance().state.get('isDone')
-    isLast = Template.instance().state.get('isLast')
-    return isDone and not isLast
-
-  canExit: ->
-    isDone = Template.instance().state.get('isDone')
-    isLast = Template.instance().state.get('isLast')
-    return isDone and isLast
-
-  isDoneAndCorrect: ->
-    isDone = Template.instance().state.get('isDone')
-    isCorrect = Template.instance().state.get('isCorrect')
-    return isDone and isCorrect
-
-  isDoneAndIncorrect: ->
-    isDone = Template.instance().state.get('isDone')
-    isCorrect = Template.instance().state.get('isCorrect')
-    return isDone and not isCorrect
+  isIncorrect: ->
+    return Template.instance().state.equals('isCorrect', false)
 
 }
 
@@ -92,9 +77,8 @@ Template.Quiz.onCreated ->
   self = this
   self.state = new ReactiveDict('quizState')
   self.state.set('current', 0)
-  self.state.set('isDone', false)
-  self.state.set('isCorrect', false)
-  # Main FSM: begin => answer => review => result => end
+  self.state.set('score', 0)
+  # Main FSM: begin => answer => result => end
   self.state.set('fsm', 'begin')
 
   self.autorun (c) ->
@@ -105,29 +89,14 @@ Template.Quiz.onCreated ->
     self.state.set('isFirst', isFirst)
     self.state.set('isLast', isLast)
 
-  self.autorun (c) ->
-    if (self.state.equals('fsm', 'begin'))
-      console.log('fsm: begin')
-
-    if (self.state.equals('fsm', 'answer'))
-      console.log('fsm: answer')
-
-    if (self.state.equals('fsm', 'review'))
-      console.log('fsm: review')
-
-    if (self.state.equals('fsm', 'result'))
-      console.log('fsm: result')
-
-    if (self.state.equals('fsm', 'end'))
-      console.log('fsm: end')
-
 
 Template.Quiz.onRendered ->
-  self = this
-  self.$('.ui .progress').progress({
+  this.$('.quiz #quiz-progress').progress({
     showActivity: false
+    #label: 'ratio'
+    #text: { ratio: '{value} de {total}' }
+    value: 0
+    total: @data.challenges.length
   })
 
-
 Template.Quiz.onDestroyed ->
-  self = this
