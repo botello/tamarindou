@@ -4,18 +4,35 @@ template(name="Quiz")
 
       .ui.segment
         //- Quiz Progress
-        #quiz-progress.ui.indicating.progress(data-value="10" data-total="20")
+        #quiz-progress.ui.indicating.progress(data-percentage="{{progress}}")
           .bar
 
-        //- Quiz Challenge
-        with getChallenge
-          +Challenge
+        .quiz-content
+          if stateBegin
+            .ui.header ¿Estás listo para comenzar?
+          
+          if stateFinish
+            .ui.header Resultados
+
+          //- Quiz Challenge
+          with challenge
+            +Challenge
 
       //- Quiz Control
       .ui.secondary.segment
         .ui.right.aligned.container
 
-          if canReview
+          if stateBegin
+            button#quiz-start.ui.primary.right.labeled.icon.button
+              i.chevron.right.icon
+              | Comenzar
+          
+          if stateEnd
+            button#quiz-finish.ui.primary.right.labeled.icon.button
+              i.chevron.right.icon
+              | Comenzar
+          
+          if state
             button#challenge-skip.ui.right.labeled.icon.button
               i.fast.forward.icon
               | Saltar
